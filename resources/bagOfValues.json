@@ -1,0 +1,18 @@
+{
+  "alertBasedValues": [
+    "srcIp",
+    "dstIp"
+  ],
+  "exportedVars": [
+    "userBasedRiskRating"
+  ],
+  "nodeResults": [{
+    "nodeId": "Node1",
+    "nodeTitle": "Check reputation of 168.126.0.1",
+    "vars": ["result"]
+  }, {
+    "nodeId": "Node2",
+    "nodeTitle": "Check reputation of 168.126.0.2",
+    "vars": ["result"]
+  }]
+}

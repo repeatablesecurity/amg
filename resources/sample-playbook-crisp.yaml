@@ -1,0 +1,29 @@
+- id: ac1
+  urn:  vt.com/soar-services/v1/checkIpReputation
+  params:
+    ipv4Addr: "@alert:srcIp"
+
+- urn: vt.com/soar-services/v1/checkIpReputation
+  params:
+    ipv4Addr: "@alert:dstIp"
+
+- type: "if"
+  condition: "@node:ac1$reputationScore == 50"
+  onTrue:
+    - id: "ifYesAc1"
+      urn: rptsec.com/sms/v1/getDomainForIp
+      params:
+        ipv4Addr: "@alert:srcIp"
+
+    - urn: vt.com/soar-services/v1/checkDomainReputation
+      params:
+        domainName: "@node:ifYesAc1$domainName"
+
+  onFalse:
+    - urn: vt.com/soar-services/v1/checkIpReputation
+      params:
+        ipv4Addr: "192.168.0.4"
+
+- urn: vt.com/soar-services/v1/checkIpReputation
+  params:
+    ipv4Addr: "192.168.0.5"

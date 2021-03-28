@@ -1,0 +1,77 @@
+[{
+  "name": "GetDomainForIp",
+  "actionUrn": "www.rptsec.com/sms/v1/getDomainForIp",
+  "executionDuration": 3,
+  "scenarios": [{
+    "input": {"ipv4Addr": "192.168.0.1"},
+    "outputFields":{
+      "domainName": "www.gooddomain.com"
+    }
+  }]
+},{
+  "name": "CheckDomainReputation",
+  "actionUrn": "www.vt.com/soar-services/v1/checkDomainReputation",
+  "executionDuration": 3,
+  "scenarios":[{
+    "input": {"domainName": "www.gooddomain.com"},
+    "outputFields": {
+      "reputationScore": "90",
+      "isKnownBad": "false"
+    }
+  }]
+},{
+  "name": "CheckIPReputation",
+  "actionUrn": "www.vt.com/soar-services/v1/checkIpReputation",
+  "executionDuration": 5,
+  "scenarios": [{
+    "input": {
+      "ipv4Addr": "192.168.0.1"
+    },
+    "error": "",
+    "outputFields": {
+      "reputationScore": "50",
+      "isKnownBad": "false"
+    }
+  }, {
+    "input": {
+      "ipv4Addr": "192.168.0.2"
+    },
+    "error": "",
+    "outputFields": {
+      "reputationScore": "52",
+      "isKnownBad": "false"
+    }
+  }, {
+    "input": {
+      "ipv4Addr": "192.168.0.3"
+    },
+    "error": "",
+    "outputFields": {
+      "reputationScore": "53",
+      "isKnownBad": "false"
+    }
+  }, {
+    "input": {
+      "ipv4Addr": "192.168.0.4"
+    },
+    "error": "",
+    "outputFields": {
+      "reputationScore": "54",
+      "isKnownBad": "false"
+    }
+  }, {
+    "input": {
+      "ipv4Addr": "192.168.0.5"
+    },
+    "error": "",
+    "outputFields": {
+      "reputationScore": "55",
+      "isKnownBad": "false"
+    }
+  }, {
+    "input": {
+      "ipv4Addr": "127.0.0.1"
+    },
+    "error": "Localhost address. Please correct."
+  }]
+}]
